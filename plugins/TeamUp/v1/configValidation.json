@@ -1,0 +1,11 @@
+{
+    "steps": [
+        {
+            "displayName": "Authenticate",
+            "dataStream": { "name": "calendar" },
+            "required": true,
+            "error": "Could not authenticate. Check your API Key and Calendar Key are correct.",
+            "success": "Connected to the calendar successfully."
+        }
+    ]
+}

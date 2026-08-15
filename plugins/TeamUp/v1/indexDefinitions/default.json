@@ -1,0 +1,26 @@
+{
+    "steps": [
+        {
+            "name": "calendar",
+            "dataStream": { "name": "calendar" },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "Calendar" },
+                "properties": ["timezone", "subcalendarCount"]
+            }
+        },
+        {
+            "name": "subCalendars",
+            "dataStream": { "name": "subCalendars" },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "Sub-Calendar" },
+                "properties": ["active", "color", "overlap", "readonly", "type", "remote_id"]
+            }
+        }
+    ]
+}

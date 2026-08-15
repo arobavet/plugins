@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Calendars",
+        "matches": {
+            "sourceType": { "type": "oneOf", "values": ["Calendar"] }
+        },
+        "variable": {
+            "name": "Calendar",
+            "type": "object",
+            "default": "none",
+            "allowMultipleSelection": false
+        }
+    },
+    {
+        "name": "Sub-Calendars",
+        "matches": {
+            "sourceType": { "type": "oneOf", "values": ["Sub-Calendar"] }
+        },
+        "variable": {
+            "name": "Sub-Calendar",
+            "type": "object",
+            "default": "none",
+            "allowMultipleSelection": false
+        }
+    }
+]

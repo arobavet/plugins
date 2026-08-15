@@ -1,0 +1,21 @@
+{
+    "name": "calendar",
+    "displayName": "Calendar",
+    "description": "The configured Teamup calendar's identity and settings, one row",
+    "tags": ["Calendar"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "get",
+        "endpointPath": "/configuration",
+        "postRequestScript": "calendar.js"
+    },
+    "matches": "none",
+    "visibility": { "type": "hidden" },
+    "metadata": [
+        { "name": "id", "displayName": "ID", "shape": "string", "visible": false },
+        { "name": "name", "displayName": "Name", "shape": "string", "role": "label" },
+        { "name": "timezone", "displayName": "Timezone", "shape": "string" },
+        { "name": "subcalendarCount", "displayName": "Sub-Calendar Count", "shape": "number" }
+    ],
+    "timeframes": false
+}

@@ -1,0 +1,26 @@
+{
+    "name": "subCalendars",
+    "displayName": "Sub-Calendars",
+    "description": "Sub-calendars in the configured calendar, one row per sub-calendar",
+    "tags": ["Calendar"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "get",
+        "endpointPath": "/configuration",
+        "pathToData": "configuration.subcalendars"
+    },
+    "matches": "none",
+    "visibility": { "type": "hidden" },
+    "metadata": [
+        { "name": "id", "displayName": "ID", "shape": "string", "visible": false },
+        { "name": "name", "displayName": "Name", "shape": "string", "role": "label" },
+        { "name": "active", "displayName": "Active", "shape": "boolean" },
+        { "name": "color", "displayName": "Color", "shape": "number" },
+        { "name": "overlap", "displayName": "Allows Overlapping Events", "shape": "boolean" },
+        { "name": "readonly", "displayName": "Read-Only", "shape": "boolean" },
+        { "name": "type", "displayName": "Type", "shape": "number" },
+        { "name": "remote_id", "displayName": "Remote ID", "shape": "string" },
+        { "name": "creation_dt", "displayName": "Created At", "shape": "date" }
+    ],
+    "timeframes": false
+}

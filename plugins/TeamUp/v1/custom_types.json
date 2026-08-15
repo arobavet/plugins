@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Calendar",
+        "sourceType": "Calendar",
+        "icon": "calendar-days",
+        "singular": "Calendar",
+        "plural": "Calendars"
+    },
+    {
+        "name": "Sub-Calendar",
+        "sourceType": "Sub-Calendar",
+        "icon": "calendar-week",
+        "singular": "Sub-Calendar",
+        "plural": "Sub-Calendars"
+    }
+]

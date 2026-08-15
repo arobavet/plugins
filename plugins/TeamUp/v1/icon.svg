@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g transform="translate(51.2, 51.2) scale(2.730666666666667)">
+    <defs>
+      <style>.j{fill:none;}.k{fill:#1070ad;}.l{fill:#71c700;}</style>
+    </defs>
+    <g id="b"><path id="c" class="j" d="M0,0H150V150H0V0Z"/></g>
+    <g id="d"><circle class="k" cx="76.03" cy="75.48" r="15.57"/></g>
+    <g id="e"><circle class="k" cx="76.03" cy="122.18" r="15.57"/></g>
+    <g id="f"><circle class="l" cx="29.32" cy="75.48" r="15.57"/></g>
+    <g id="g"><circle class="l" cx="29.32" cy="122.18" r="15.57"/></g>
+    <g id="h"><circle class="l" cx="122.74" cy="75.48" r="15.57"/></g>
+    <g id="i"><circle class="l" cx="122.74" cy="122.18" r="15.57"/></g>
+    <path class="k" d="M122.76,13.77H29.3c-8.58,0-15.54,6.96-15.54,15.54h0c0,8.58,6.96,15.54,15.54,15.54H122.76c8.58,0,15.54-6.96,15.54-15.54h0c0-8.58-6.96-15.54-15.54-15.54Z"/>
+  </g>
+</svg>

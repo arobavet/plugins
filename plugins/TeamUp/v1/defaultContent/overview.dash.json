@@ -1,0 +1,191 @@
+{
+    "name": "Overview",
+    "schemaVersion": "1.5",
+    "timeframe": "thisMonth",
+    "dashboard": {
+        "_type": "layout/grid",
+        "columns": 4,
+        "version": 1,
+        "contents": [
+            {
+                "i": "33036b35-7476-4061-bbc3-7824f9514335",
+                "x": 0,
+                "y": 0,
+                "w": 1,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Total Sub-Calendars",
+                    "description": "",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "datastream-properties",
+                        "name": "properties",
+                        "group": { "by": [], "aggregate": [{ "type": "count" }] }
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Sub-Calendars]}}",
+                        "workspace": "{{workspaceId}}"
+                    },
+                    "visualisation": {
+                        "type": "data-stream-scalar",
+                        "config": {
+                            "data-stream-scalar": {
+                                "value": "count",
+                                "comparisonColumn": "none",
+                                "label": "Total Sub-Calendars"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "79efea72-320d-408f-9acc-0749c93164c2",
+                "x": 1,
+                "y": 0,
+                "w": 1,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Events This Month",
+                    "description": "",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[events]}}",
+                        "name": "events",
+                        "pluginConfigId": "{{configId}}",
+                        "group": { "by": [], "aggregate": [{ "type": "count" }] }
+                    },
+                    "visualisation": {
+                        "type": "data-stream-scalar",
+                        "config": {
+                            "data-stream-scalar": {
+                                "value": "count",
+                                "comparisonColumn": "none",
+                                "label": "Events This Month"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "d796af7a-cc42-498d-9557-625037cbe249",
+                "x": 2,
+                "y": 0,
+                "w": 2,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Calendar",
+                    "description": "",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "datastream-properties",
+                        "name": "properties"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Calendars]}}",
+                        "workspace": "{{workspaceId}}"
+                    },
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": true,
+                                "hiddenColumns": ["id", "links", "type", "label", "sourceId", "sourceType"]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "6270f5cc-9ff2-4374-ab77-d0b4d31b6e75",
+                "x": 0,
+                "y": 2,
+                "w": 4,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Sub-Calendars",
+                    "description": "",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "datastream-properties",
+                        "name": "properties",
+                        "sort": { "by": [["name", "asc"]] }
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Sub-Calendars]}}",
+                        "workspace": "{{workspaceId}}"
+                    },
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": false,
+                                "columnOrder": ["name", "active", "color", "overlap", "readonly"],
+                                "hiddenColumns": [
+                                    "id",
+                                    "links",
+                                    "type",
+                                    "label",
+                                    "sourceId",
+                                    "sourceType",
+                                    "remote_id",
+                                    "creation_dt"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "8f59b383-2874-43f5-a962-d9ed4c170e9e",
+                "x": 0,
+                "y": 5,
+                "w": 4,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Events",
+                    "description": "",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[events]}}",
+                        "name": "events",
+                        "pluginConfigId": "{{configId}}",
+                        "sort": { "by": [["start_dt", "asc"]] }
+                    },
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": false,
+                                "columnOrder": ["title", "start_dt", "end_dt", "all_day", "location", "who"],
+                                "hiddenColumns": ["id", "notes", "readonly", "isRecurring", "subcalendar_ids"]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

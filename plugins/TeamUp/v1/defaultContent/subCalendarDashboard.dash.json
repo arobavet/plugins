@@ -1,0 +1,166 @@
+{
+    "name": "Sub-Calendar",
+    "schemaVersion": "1.5",
+    "timeframe": "thisMonth",
+    "variables": ["{{variables.[Sub-Calendar]}}"],
+    "dashboard": {
+        "_type": "layout/grid",
+        "columns": 4,
+        "version": 1,
+        "contents": [
+            {
+                "i": "7e3b27a2-792c-4239-92ed-ca8ad6a7bef3",
+                "x": 0,
+                "y": 0,
+                "w": 2,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Properties",
+                    "description": "",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "datastream-properties",
+                        "name": "properties"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Sub-Calendars]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Sub-Calendar]}}"
+                    },
+                    "variables": ["{{variables.[Sub-Calendar]}}"],
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": true,
+                                "hiddenColumns": ["id", "links", "type", "label", "sourceId", "sourceType"]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "06346d17-fe77-4008-808e-4c1ba193a26a",
+                "x": 2,
+                "y": 0,
+                "w": 1,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Active",
+                    "description": "",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "datastream-properties",
+                        "name": "properties"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Sub-Calendars]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Sub-Calendar]}}"
+                    },
+                    "variables": ["{{variables.[Sub-Calendar]}}"],
+                    "visualisation": {
+                        "type": "data-stream-scalar",
+                        "config": {
+                            "data-stream-scalar": {
+                                "value": "active",
+                                "comparisonColumn": "none",
+                                "label": "Active"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "51d04039-dd54-40b8-9b01-bbbd25ce07d7",
+                "x": 3,
+                "y": 0,
+                "w": 1,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Events This Month",
+                    "description": "",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[events]}}",
+                        "name": "events",
+                        "pluginConfigId": "{{configId}}",
+                        "dataSourceConfig": {
+                            "subCalendar": {
+                                "variable": "{{variables.[Sub-Calendar]}}",
+                                "workspace": "{{workspaceId}}",
+                                "scope": "{{scopes.[Sub-Calendars]}}"
+                            }
+                        },
+                        "group": { "by": [], "aggregate": [{ "type": "count" }] }
+                    },
+                    "variables": ["{{variables.[Sub-Calendar]}}"],
+                    "visualisation": {
+                        "type": "data-stream-scalar",
+                        "config": {
+                            "data-stream-scalar": {
+                                "value": "count",
+                                "comparisonColumn": "none",
+                                "label": "Events This Month"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "e101f6e8-ad05-459d-91d1-74c22d49ec6b",
+                "x": 0,
+                "y": 3,
+                "w": 4,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Events",
+                    "description": "",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[events]}}",
+                        "name": "events",
+                        "pluginConfigId": "{{configId}}",
+                        "dataSourceConfig": {
+                            "subCalendar": {
+                                "variable": "{{variables.[Sub-Calendar]}}",
+                                "workspace": "{{workspaceId}}",
+                                "scope": "{{scopes.[Sub-Calendars]}}"
+                            }
+                        },
+                        "sort": { "by": [["start_dt", "asc"]] }
+                    },
+                    "variables": ["{{variables.[Sub-Calendar]}}"],
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": false,
+                                "columnOrder": ["title", "start_dt", "end_dt", "all_day", "location", "who"],
+                                "hiddenColumns": ["id", "notes", "readonly", "isRecurring", "subcalendar_ids"]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "name": "events",
+    "displayName": "Events",
+    "description": "Calendar events in the configured date range, one row per event",
+    "tags": ["Calendar", "Events"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "get",
+        "endpointPath": "/events",
+        "getArgs": [
+            { "key": "startDate", "value": "{{timeframe.start.slice(0,10)}}" },
+            { "key": "endDate", "value": "{{timeframe.end.slice(0,10)}}" }
+        ],
+        "postRequestScript": "events.js"
+    },
+    "matches": "none",
+    "ui": [
+        {
+            "type": "objects",
+            "name": "subCalendar",
+            "label": "Sub-Calendar (optional)",
+            "matches": {
+                "sourceType": { "type": "oneOf", "values": ["Sub-Calendar"] }
+            }
+        }
+    ],
+    "metadata": [
+        { "name": "id", "displayName": "ID", "shape": "string", "visible": false },
+        { "name": "title", "displayName": "Title", "shape": "string", "role": "label" },
+        { "name": "start_dt", "displayName": "Start", "shape": "date", "role": "timestamp" },
+        { "name": "end_dt", "displayName": "End", "shape": "date" },
+        { "name": "all_day", "displayName": "All Day", "shape": "boolean" },
+        { "name": "location", "displayName": "Location", "shape": "string" },
+        { "name": "who", "displayName": "Who", "shape": "string" },
+        { "name": "notes", "displayName": "Notes", "shape": "string" },
+        { "name": "readonly", "displayName": "Read-Only", "shape": "boolean" },
+        { "name": "isRecurring", "displayName": "Recurring", "shape": "boolean" },
+        { "name": "subcalendar_ids", "displayName": "Sub-Calendar IDs", "shape": "json", "visible": false }
+    ],
+    "timeframes": [
+        "last1hour",
+        "last12hours",
+        "last24hours",
+        "last7days",
+        "last30days",
+        "thisMonth",
+        "lastMonth",
+        "thisQuarter",
+        "lastQuarter"
+    ]
+}

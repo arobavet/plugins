@@ -1,0 +1,17 @@
+[
+    {
+        "type": "password",
+        "name": "apiKey",
+        "label": "API Key",
+        "help": "Your Teamup API key, sent as the `Teamup-Token` header. Requested from [teamup.com/api-keys/request](https://teamup.com/api-keys/request) — approval is manual and may take a little time.",
+        "validation": { "required": true }
+    },
+    {
+        "type": "text",
+        "name": "calendarKey",
+        "label": "Calendar Key",
+        "help": "The access key for the calendar to monitor, from that calendar's **Sharing** settings in Teamup. **Read-only** permission is enough for monitoring; **Administrator** permission additionally reveals each sub-calendar's type and any inactive sub-calendars.",
+        "placeholder": "ks1234567890123456",
+        "validation": { "required": true }
+    }
+]
