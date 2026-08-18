@@ -56,7 +56,7 @@
     },
     "metadata": [
         { "name": "name", "displayName": "Endpoint", "shape": "string", "role": "label" },
-        { "name": "id", "shape": "string", "visible": false },
+        { "name": "id", "displayName": "Endpoint ID", "shape": "string" },
         { "name": "fqdn", "displayName": "FQDN", "shape": "string" },
         { "name": "isManaged", "displayName": "Managed", "shape": "boolean" },
         { "name": "machineType", "displayName": "Machine Type", "shape": "string" },

@@ -114,6 +114,7 @@
                                 "transpose": false,
                                 "columnOrder": [
                                     "name",
+                                    "id",
                                     "fqdn",
                                     "isManaged",
                                     "machineType",
