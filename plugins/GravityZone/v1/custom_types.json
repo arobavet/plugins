@@ -5,5 +5,12 @@
         "icon": "building",
         "singular": "Company",
         "plural": "Companies"
+    },
+    {
+        "name": "GravityZone Endpoint",
+        "sourceType": "GravityZone Endpoint",
+        "icon": "microchip",
+        "singular": "Endpoint",
+        "plural": "Endpoints"
     }
 ]

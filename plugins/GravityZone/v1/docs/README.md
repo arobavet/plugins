@@ -46,11 +46,14 @@ The out-of-the-box dashboards include an estate-wide **Overview** plus a **Compa
 | Object type | API source | Represents |
 | ----------- | ---------- | ---------- |
 | **GravityZone Company** | `getCompaniesList` (Network API) | A managed customer company. |
+| **GravityZone Endpoint** | `getEndpointsList` (Network API), one call per company | A managed device. |
+
+**Relationships:** each Endpoint belongs to a Company.
 
 ## Known limitations
 
 - **Partner/MSP tier required** — company listing (`getCompaniesList`) is a partner-only capability; a single-company account will authenticate but see nothing.
-- **No Endpoint object** — endpoints are shown as a table on the Company perspective, not indexed individually; there's no per-endpoint drilldown, search, or dashboard scoping. A single endpoint's full details are still available via the **Endpoint Details** stream, entered manually by ID.
+- **Endpoint import is unreliable at scale** — importing endpoints requires one API call per company (GravityZone has no cross-company endpoint listing), and the import step's execution window is too short to complete this for a large partner account. On accounts with more than roughly 100–150 companies, the **GravityZone Endpoint** object is likely to stay empty; endpoints remain fully available as a table on the Company perspective and via the **Endpoint Details** stream (entered manually by ID) regardless.
 - **Rate limit** — GravityZone enforces 10 requests/second per API key; very large partner accounts (hundreds of companies with many endpoints each) may see slower dashboard loads on endpoint-heavy tiles.
 - **Quarantine covers Computers and Virtual Machines only** — Exchange mailbox quarantine isn't included.
 - **No incident/threat timeline** — GravityZone's public API doesn't expose one; this plugin covers licensing, policies, endpoints, and quarantine only.

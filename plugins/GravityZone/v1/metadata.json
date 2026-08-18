@@ -10,7 +10,7 @@
     "importNotSupported": false,
     "restrictedToPlatforms": [],
     "keywords": ["security", "endpoint protection", "antivirus", "msp", "bitdefender", "gravityzone"],
-    "objectTypes": ["GravityZone Company"],
+    "objectTypes": ["GravityZone Company", "GravityZone Endpoint"],
     "links": [
         {
             "category": "documentation",

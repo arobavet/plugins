@@ -9,6 +9,22 @@
                 "name": "name",
                 "type": { "value": "GravityZone Company" }
             }
+        },
+        {
+            "name": "endpoints",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\")"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
         }
     ]
 }
