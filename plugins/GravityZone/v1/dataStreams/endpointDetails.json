@@ -1,0 +1,44 @@
+{
+    "name": "endpointDetails",
+    "displayName": "Endpoint Details",
+    "description": "Agent, policy, malware status, and module status for a single endpoint given its ID",
+    "tags": ["Endpoint"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "network",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getManagedEndpointDetails",
+            "params": { "endpointId": "{{endpointId}}" },
+            "id": "{{Date.now()}}"
+        },
+        "pathToData": "result",
+        "expandInnerObjects": true,
+        "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
+    },
+    "matches": "none",
+    "ui": [
+        {
+            "type": "text",
+            "name": "endpointId",
+            "label": "Endpoint ID",
+            "help": "Copy from the Company Endpoints table's ID column.",
+            "validation": { "required": true }
+        }
+    ],
+    "metadata": [
+        { "name": "name", "displayName": "Endpoint", "shape": "string", "role": "label" },
+        { "name": "operatingSystem", "displayName": "OS", "shape": "string" },
+        { "name": "ip", "displayName": "IP Address", "shape": "string" },
+        { "name": "lastSeen", "displayName": "Last Seen", "shape": "date" },
+        { "name": "malwareStatus.detection", "displayName": "Malware Detected (24h)", "shape": "boolean" },
+        { "name": "malwareStatus.infected", "displayName": "Still Infected", "shape": "boolean" },
+        { "name": "policy.name", "displayName": "Policy", "shape": "string" },
+        { "name": "policy.applied", "displayName": "Policy Applied", "shape": "boolean" },
+        { "name": "agent.productVersion", "displayName": "Agent Version", "shape": "string" },
+        { "name": "agent.lastUpdate", "displayName": "Last Signature Update", "shape": "date" },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}

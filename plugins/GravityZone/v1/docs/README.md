@@ -35,6 +35,7 @@ The out-of-the-box dashboards include an estate-wide **Overview** plus a **Compa
 ## Data streams
 
 - **Company Endpoints** — managed endpoints for a company, one row per endpoint.
+- **Endpoint Details** — agent, policy, malware status, and module status for a single endpoint, given its ID (paste it from the Company Endpoints table — there's no indexed Endpoint object to pick from).
 - **Company License** — subscription, seat usage, and enabled features for a company.
 - **Company Monthly Usage** — current-month seat usage for a company.
 - **Policies** — security policies across all managed companies.
@@ -49,7 +50,7 @@ The out-of-the-box dashboards include an estate-wide **Overview** plus a **Compa
 ## Known limitations
 
 - **Partner/MSP tier required** — company listing (`getCompaniesList`) is a partner-only capability; a single-company account will authenticate but see nothing.
-- **No Endpoint object** — endpoints are shown as a table on the Company perspective, not indexed individually; there's no per-endpoint drilldown, search, or dashboard scoping.
+- **No Endpoint object** — endpoints are shown as a table on the Company perspective, not indexed individually; there's no per-endpoint drilldown, search, or dashboard scoping. A single endpoint's full details are still available via the **Endpoint Details** stream, entered manually by ID.
 - **Rate limit** — GravityZone enforces 10 requests/second per API key; very large partner accounts (hundreds of companies with many endpoints each) may see slower dashboard loads on endpoint-heavy tiles.
 - **Quarantine covers Computers and Virtual Machines only** — Exchange mailbox quarantine isn't included.
 - **No incident/threat timeline** — GravityZone's public API doesn't expose one; this plugin covers licensing, policies, endpoints, and quarantine only.
