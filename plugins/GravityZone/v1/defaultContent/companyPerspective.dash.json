@@ -1,0 +1,130 @@
+{
+    "name": "Company Perspective",
+    "schemaVersion": "1.5",
+    "timeframe": "none",
+    "variables": ["{{variables.[Company]}}"],
+    "dashboard": {
+        "_type": "layout/grid",
+        "columns": 4,
+        "version": 1,
+        "contents": [
+            {
+                "i": "bcf60d43-c27b-493f-90f8-fd4776a43a4d",
+                "x": 0,
+                "y": 0,
+                "w": 2,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "License",
+                    "description": "Subscription and enabled features for this company",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[companyLicense]}}",
+                        "name": "companyLicense",
+                        "pluginConfigId": "{{configId}}"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Companies]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Company]}}"
+                    },
+                    "variables": ["{{variables.[Company]}}"],
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": true
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "86dd7da4-18f4-48c7-96bd-0b9671306bb7",
+                "x": 2,
+                "y": 0,
+                "w": 2,
+                "h": 3,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Monthly Usage",
+                    "description": "Monthly license seat usage for this company in the current month",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[companyMonthlyUsage]}}",
+                        "name": "companyMonthlyUsage",
+                        "pluginConfigId": "{{configId}}"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Companies]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Company]}}"
+                    },
+                    "variables": ["{{variables.[Company]}}"],
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": true
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "fbb44bd5-da7d-4f38-a4e8-e342973e3ad0",
+                "x": 0,
+                "y": 3,
+                "w": 4,
+                "h": 4,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Endpoints",
+                    "description": "Managed endpoints belonging to this company",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[endpoints]}}",
+                        "name": "endpoints",
+                        "pluginConfigId": "{{configId}}",
+                        "sort": { "by": [["name", "asc"]] }
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Companies]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Company]}}"
+                    },
+                    "variables": ["{{variables.[Company]}}"],
+                    "visualisation": {
+                        "type": "data-stream-table",
+                        "config": {
+                            "data-stream-table": {
+                                "transpose": false,
+                                "columnOrder": [
+                                    "name",
+                                    "fqdn",
+                                    "isManaged",
+                                    "machineType",
+                                    "operatingSystemVersion",
+                                    "ip"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

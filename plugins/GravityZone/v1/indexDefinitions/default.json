@@ -1,0 +1,14 @@
+{
+    "steps": [
+        {
+            "name": "companies",
+            "dataStream": { "name": "companies" },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Company" }
+            }
+        }
+    ]
+}

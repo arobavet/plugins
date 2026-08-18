@@ -1,0 +1,69 @@
+{
+    "name": "endpoints",
+    "displayName": "Company Endpoints",
+    "description": "Managed endpoints belonging to a company, one row per endpoint",
+    "tags": [
+        "Company",
+        "Endpoint"
+    ],
+    "baseDataSourceName": "httpRequestScopedSingle",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "network",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getEndpointsList",
+            "params": {
+                "parentId": "{{object.rawId}}",
+                "page": 1,
+                "perPage": 100
+            },
+            "id": "{{Date.now()}}"
+        },
+        "postRequestScript": "endpoints.js",
+        "errorHandling": {
+            "type": "script",
+            "script": "errorHandling/endpoints.js"
+        },
+        "paging": {
+            "mode": "offset",
+            "pageSize": {
+                "realm": "body",
+                "path": "params.perPage",
+                "value": 100
+            },
+            "offset": {
+                "mode": "page",
+                "rowCountIn": {
+                    "realm": "payloadArraySize",
+                    "path": "result.items"
+                },
+                "base": 1
+            },
+            "out": {
+                "realm": "body",
+                "path": "params.page"
+            }
+        }
+    },
+    "matches": {
+        "sourceType": {
+            "type": "oneOf",
+            "values": [
+                "GravityZone Company"
+            ]
+        }
+    },
+    "metadata": [
+        { "name": "name", "displayName": "Endpoint", "shape": "string", "role": "label" },
+        { "name": "id", "shape": "string", "visible": false },
+        { "name": "fqdn", "displayName": "FQDN", "shape": "string" },
+        { "name": "isManaged", "displayName": "Managed", "shape": "boolean" },
+        { "name": "machineType", "displayName": "Machine Type", "shape": "string" },
+        { "name": "operatingSystemVersion", "displayName": "OS", "shape": "string" },
+        { "name": "ip", "displayName": "IP Address", "shape": "string" },
+        { "name": "groupId", "shape": "string", "visible": false },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Companies",
+        "matches": {
+            "sourceType": { "type": "oneOf", "values": ["GravityZone Company"] }
+        },
+        "variable": {
+            "name": "Company",
+            "allowMultipleSelection": false,
+            "default": "none",
+            "type": "object"
+        }
+    }
+]

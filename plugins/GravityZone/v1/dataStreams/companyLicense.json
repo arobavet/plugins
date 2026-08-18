@@ -1,0 +1,35 @@
+{
+    "name": "companyLicense",
+    "displayName": "Company License",
+    "description": "License subscription and enabled features for a company",
+    "tags": ["Company", "Licensing"],
+    "baseDataSourceName": "httpRequestScopedSingle",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "licensing",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getLicenseInfo",
+            "params": { "companyId": "{{object.rawId}}" },
+            "id": "{{Date.now()}}"
+        },
+        "pathToData": "result",
+        "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
+    },
+    "matches": { "sourceType": { "type": "oneOf", "values": ["GravityZone Company"] } },
+    "metadata": [
+        { "name": "subscriptionType", "displayName": "Subscription Type", "shape": "number" },
+        { "name": "expiryDate", "displayName": "Expiry Date", "shape": "date" },
+        { "name": "usedSlots", "displayName": "Used Slots", "shape": "number" },
+        { "name": "totalSlots", "displayName": "Total Slots", "shape": "number" },
+        { "name": "manageExchange", "displayName": "Manage Exchange", "shape": "boolean" },
+        { "name": "manageEncryption", "displayName": "Manage Encryption", "shape": "boolean" },
+        { "name": "manageRemoteEnginesScanning", "displayName": "Manage Remote Engines Scanning", "shape": "boolean" },
+        { "name": "manageHyperDetect", "displayName": "Manage HyperDetect", "shape": "boolean" },
+        { "name": "manageSandboxAnalyzer", "displayName": "Manage Sandbox Analyzer", "shape": "boolean" },
+        { "name": "managePatchManagement", "displayName": "Manage Patch Management", "shape": "boolean" },
+        { "name": "manageEventCorrelator", "displayName": "Manage Event Correlator", "shape": "boolean" },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}

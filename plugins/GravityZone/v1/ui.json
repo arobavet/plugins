@@ -1,0 +1,24 @@
+[
+    {
+        "type": "url",
+        "name": "accessUrl",
+        "label": "Access URL",
+        "placeholder": "https://cloudgz-api.gravityzone.bitdefender.com",
+        "help": "Your GravityZone Control Center API access URL, with no trailing slash. Found under My Account → Control Center API.",
+        "validation": {
+            "required": true,
+            "pattern": {
+                "value": "^https://[^\\s]+$",
+                "message": "Enter a valid https URL"
+            }
+        }
+    },
+    {
+        "type": "password",
+        "name": "apiKey",
+        "label": "API Key",
+        "placeholder": "N8KzwcqVUxAI1RoPi5jyFJPkPlkDl9vF",
+        "help": "Generated from My Account → API keys. Select the Companies, Licensing, Network, Policies, and Quarantine APIs when creating the key.",
+        "validation": { "required": true }
+    }
+]

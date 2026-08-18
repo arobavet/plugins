@@ -1,0 +1,32 @@
+{
+    "name": "companyMonthlyUsage",
+    "displayName": "Company Monthly Usage",
+    "description": "Monthly license seat usage for a company in the current month",
+    "tags": ["Company", "Licensing"],
+    "baseDataSourceName": "httpRequestScopedSingle",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "licensing",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getMonthlyUsage",
+            "params": { "companyId": "{{object.rawId}}" },
+            "id": "{{Date.now()}}"
+        },
+        "pathToData": "result",
+        "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
+    },
+    "matches": {
+        "sourceType": {
+            "type": "oneOf",
+            "values": ["GravityZone Company"]
+        }
+    },
+    "metadata": [
+        { "name": "endpointMonthlyUsage", "displayName": "Endpoint Monthly Usage", "shape": "number" },
+        { "name": "exchangeMonthlyUsage", "displayName": "Exchange Monthly Usage", "shape": "number" },
+        { "name": "encryptionMonthlyUsage", "displayName": "Encryption Monthly Usage", "shape": "number" },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}

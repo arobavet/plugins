@@ -1,0 +1,54 @@
+{
+    "name": "policies",
+    "displayName": "Policies",
+    "description": "Security policies across all managed companies",
+    "tags": ["Policy"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "policies",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getPoliciesList",
+            "params": {
+                "page": 1,
+                "perPage": 100
+            },
+            "id": "{{Date.now()}}"
+        },
+        "postRequestScript": "policies.js",
+        "errorHandling": {
+            "type": "script",
+            "script": "errorHandling/policies.js"
+        },
+        "paging": {
+            "mode": "offset",
+            "pageSize": {
+                "realm": "body",
+                "path": "params.perPage",
+                "value": 100
+            },
+            "offset": {
+                "mode": "page",
+                "rowCountIn": {
+                    "realm": "payloadArraySize",
+                    "path": "result.items"
+                },
+                "base": 1
+            },
+            "out": {
+                "realm": "body",
+                "path": "params.page"
+            }
+        }
+    },
+    "matches": "none",
+    "metadata": [
+        { "name": "id", "shape": "string", "visible": false },
+        { "name": "name", "displayName": "Name", "shape": "string", "role": "label" },
+        { "name": "companyId", "shape": "string", "visible": false },
+        { "name": "companyName", "displayName": "Company", "shape": "string" },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}

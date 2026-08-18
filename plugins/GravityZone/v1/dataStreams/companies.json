@@ -1,0 +1,23 @@
+{
+    "name": "companies",
+    "displayName": "Companies",
+    "description": "Companies managed under the partner account, one row per company",
+    "tags": ["Company"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "network",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getCompaniesList",
+            "params": {},
+            "id": "{{Date.now()}}"
+        },
+        "pathToData": "result",
+        "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
+    },
+    "matches": "none",
+    "metadata": [{ "pattern": ".*" }],
+    "timeframes": false,
+    "visibility": { "type": "hidden" }
+}

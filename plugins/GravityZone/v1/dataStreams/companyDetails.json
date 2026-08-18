@@ -1,0 +1,22 @@
+{
+    "name": "companyDetails",
+    "displayName": "Company Details",
+    "description": "Details of the company associated with the API key",
+    "tags": ["Company"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "companies",
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getCompanyDetails",
+            "params": {},
+            "id": "{{Date.now()}}"
+        },
+        "pathToData": "result"
+    },
+    "matches": "none",
+    "metadata": [{ "pattern": ".*" }],
+    "timeframes": false,
+    "visibility": { "type": "hidden" }
+}

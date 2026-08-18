@@ -1,0 +1,63 @@
+{
+    "name": "quarantineItems",
+    "displayName": "Quarantine Items",
+    "description": "Files quarantined across all managed endpoints",
+    "tags": ["Security"],
+    "baseDataSourceName": "httpRequestUnscoped",
+    "config": {
+        "httpMethod": "post",
+        "endpointPath": "quarantine/computers",
+        "expandInnerObjects": true,
+        "postBody": {
+            "jsonrpc": "2.0",
+            "method": "getQuarantineItemsList",
+            "params": {
+                "page": 1,
+                "perPage": 100
+            },
+            "id": "{{Date.now()}}"
+        },
+        "postRequestScript": "quarantineItems.js",
+        "errorHandling": {
+            "type": "script",
+            "script": "errorHandling/quarantineItems.js"
+        },
+        "paging": {
+            "mode": "offset",
+            "pageSize": {
+                "realm": "body",
+                "path": "params.perPage",
+                "value": 100
+            },
+            "offset": {
+                "mode": "page",
+                "rowCountIn": {
+                    "realm": "payloadArraySize",
+                    "path": "result.items"
+                },
+                "base": 1
+            },
+            "out": {
+                "realm": "body",
+                "path": "params.page"
+            }
+        }
+    },
+    "matches": "none",
+    "metadata": [
+        { "name": "id", "shape": "string", "visible": false },
+        { "name": "endpointName", "displayName": "Endpoint", "shape": "string", "role": "label" },
+        { "name": "quarantinedOn", "displayName": "Quarantined On", "shape": "date" },
+        {
+            "name": "actionStatus",
+            "displayName": "Action Status",
+            "valueExpression": "{{ ({ 0: 'None', 1: 'Pending remove', 2: 'Pending restore', 3: 'Remove failed', 4: 'Restore failed', 16: 'Pending save', 17: 'Failed save' })[$['actionStatus']] || $['actionStatus'] }}",
+            "shape": "string"
+        },
+        { "name": "endpointIP", "displayName": "Endpoint IP", "shape": "string" },
+        { "name": "canBeRestored", "displayName": "Can Be Restored", "shape": "boolean" },
+        { "name": "companyId", "shape": "string", "visible": false },
+        { "pattern": ".*" }
+    ],
+    "timeframes": false
+}
