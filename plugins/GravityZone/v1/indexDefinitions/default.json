@@ -7,14 +7,127 @@
             "objectMapping": {
                 "id": "id",
                 "name": "name",
-                "type": { "value": "GravityZone Company" }
+                "type": { "value": "GravityZone Company" },
+                "properties": ["shardBucket"]
             }
         },
         {
-            "name": "endpoints",
+            "name": "endpoints1",
             "dataStream": { "name": "endpoints" },
             "scope": {
-                "query": "g.V().has(\"sourceType\", \"GravityZone Company\")"
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"0\", \"1\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints2",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"2\", \"3\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints3",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"4\", \"5\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints4",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"6\", \"7\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints5",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"8\", \"9\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints6",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"a\", \"b\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints7",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"c\", \"d\"))"
+            },
+            "timeframe": "none",
+            "objectMapping": {
+                "id": "id",
+                "name": "name",
+                "type": { "value": "GravityZone Endpoint" },
+                "properties": ["groupId", "isManaged", "machineType", "operatingSystemVersion", "ip"]
+            },
+            "dependsOn": ["companies"],
+            "optional": true
+        },
+        {
+            "name": "endpoints8",
+            "dataStream": { "name": "endpoints" },
+            "scope": {
+                "query": "g.V().has(\"sourceType\", \"GravityZone Company\").has(\"shardBucket\", within(\"e\", \"f\"))"
             },
             "timeframe": "none",
             "objectMapping": {

@@ -1,32 +1,28 @@
 {
     "name": "endpointDetails",
     "displayName": "Endpoint Details",
-    "description": "Agent, policy, malware status, and module status for a single endpoint given its ID",
+    "description": "Agent, policy, malware status, and module status for one or more endpoints",
     "tags": ["Endpoint"],
-    "baseDataSourceName": "httpRequestUnscoped",
+    "baseDataSourceName": "httpRequestScopedSingle",
     "config": {
         "httpMethod": "post",
         "endpointPath": "network",
         "postBody": {
             "jsonrpc": "2.0",
             "method": "getManagedEndpointDetails",
-            "params": { "endpointId": "{{endpointId}}" },
+            "params": { "endpointId": "{{object.rawId}}" },
             "id": "{{Date.now()}}"
         },
         "pathToData": "result",
         "expandInnerObjects": true,
         "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
     },
-    "matches": "none",
-    "ui": [
-        {
-            "type": "text",
-            "name": "endpointId",
-            "label": "Endpoint ID",
-            "help": "Copy from the Company Endpoints table's ID column.",
-            "validation": { "required": true }
+    "matches": {
+        "sourceType": {
+            "type": "oneOf",
+            "values": ["GravityZone Endpoint"]
         }
-    ],
+    },
     "metadata": [
         { "name": "name", "displayName": "Endpoint", "shape": "string", "role": "label" },
         { "name": "operatingSystem", "displayName": "OS", "shape": "string" },

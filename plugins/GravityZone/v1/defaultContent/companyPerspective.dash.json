@@ -114,6 +114,7 @@
                                 "transpose": false,
                                 "columnOrder": [
                                     "name",
+                                    "companyName",
                                     "id",
                                     "fqdn",
                                     "isManaged",

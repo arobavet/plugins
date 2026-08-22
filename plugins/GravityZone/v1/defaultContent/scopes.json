@@ -10,5 +10,17 @@
             "default": "none",
             "type": "object"
         }
+    },
+    {
+        "name": "Endpoints",
+        "matches": {
+            "sourceType": { "type": "oneOf", "values": ["GravityZone Endpoint"] }
+        },
+        "variable": {
+            "name": "Endpoint",
+            "allowMultipleSelection": true,
+            "default": "none",
+            "type": "object"
+        }
     }
 ]

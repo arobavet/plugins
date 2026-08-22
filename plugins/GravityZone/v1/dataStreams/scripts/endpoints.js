@@ -3,4 +3,6 @@
 // that errorHandling/endpoints.js suppresses, the raw body has no "result" at all — return
 // an empty array so this page contributes zero rows and paging's rowCountIn sees 0, which
 // is what stops pagination cleanly (see errorHandling/endpoints.js for why that's needed).
-result = (data && data.result && data.result.items) || [];
+const items = (data && data.result && data.result.items) || [];
+const companyName = context.objects[0]?.name;
+result = items.map((item) => ({ ...item, companyName }));

@@ -30,12 +30,12 @@ On save, the plugin calls `getCompanyDetails` as a minimal authenticated probe; 
 - **Policies** — security policies across every managed company.
 - **Quarantine** — files quarantined on managed endpoints (Computers and Virtual Machines service) across the estate.
 
-The out-of-the-box dashboards include an estate-wide **Overview** plus a **Company** perspective.
+The out-of-the-box dashboards include an estate-wide **Overview**, a **Company** perspective, and an **Endpoint** perspective (select one or more endpoints to see their details side by side).
 
 ## Data streams
 
-- **Company Endpoints** — managed endpoints for a company, one row per endpoint.
-- **Endpoint Details** — agent, policy, malware status, and module status for a single endpoint, given its ID (paste it from the Company Endpoints table — there's no indexed Endpoint object to pick from).
+- **Company Endpoints** — managed endpoints for a company, one row per endpoint; each row drills down to that device's own **GravityZone Endpoint** object.
+- **Endpoint Details** — agent, policy, malware status, and module status for one or more selected endpoints.
 - **Company License** — subscription, seat usage, and enabled features for a company.
 - **Company Monthly Usage** — current-month seat usage for a company.
 - **Policies** — security policies across all managed companies.
@@ -48,12 +48,14 @@ The out-of-the-box dashboards include an estate-wide **Overview** plus a **Compa
 | **GravityZone Company** | `getCompaniesList` (Network API) | A managed customer company. |
 | **GravityZone Endpoint** | `getEndpointsList` (Network API), one call per company | A managed device. |
 
+Endpoint import runs as 8 parallel shards, each covering a slice of companies (bucketed by the last hex digit of the company id) so that no single import step has to fan out to every company at once.
+
 **Relationships:** each Endpoint belongs to a Company.
 
 ## Known limitations
 
 - **Partner/MSP tier required** — company listing (`getCompaniesList`) is a partner-only capability; a single-company account will authenticate but see nothing.
-- **Endpoint import is unreliable at scale** — importing endpoints requires one API call per company (GravityZone has no cross-company endpoint listing), and the import step's execution window is too short to complete this for a large partner account. On accounts with more than roughly 100–150 companies, the **GravityZone Endpoint** object is likely to stay empty; endpoints remain fully available as a table on the Company perspective and via the **Endpoint Details** stream (entered manually by ID) regardless.
+- **Endpoint import scales to roughly 800 companies** — importing endpoints requires one API call per company (GravityZone has no cross-company endpoint listing); a single import step fanning out to every company at once runs out of memory on large partner accounts. Endpoints are imported as 8 parallel shards (companies bucketed by the last hex digit of their id) to keep each step's fan-out bounded — tested clean up to 434 companies. Beyond roughly 800 companies, some shards may still run out of memory and the affected companies' endpoints won't land as **GravityZone Endpoint** objects that import cycle; endpoints remain fully available as a table on the Company perspective regardless (just not selectable by name in the **Endpoint Details** picker until a later import cycle catches them).
 - **Rate limit** — GravityZone enforces 10 requests/second per API key; very large partner accounts (hundreds of companies with many endpoints each) may see slower dashboard loads on endpoint-heavy tiles.
 - **Quarantine covers Computers and Virtual Machines only** — Exchange mailbox quarantine isn't included.
 - **No incident/threat timeline** — GravityZone's public API doesn't expose one; this plugin covers licensing, policies, endpoints, and quarantine only.

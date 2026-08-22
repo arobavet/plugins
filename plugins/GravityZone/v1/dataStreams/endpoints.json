@@ -55,7 +55,15 @@
         }
     },
     "metadata": [
-        { "name": "name", "displayName": "Endpoint", "shape": "string", "role": "label" },
+        {
+            "name": "name",
+            "displayName": "Endpoint",
+            "shape": "string",
+            "role": "label",
+            "sourceId": "id",
+            "sourceType": "GravityZone Endpoint"
+        },
+        { "name": "companyName", "displayName": "Company", "shape": "string" },
         { "name": "id", "displayName": "Endpoint ID", "shape": "string" },
         { "name": "fqdn", "displayName": "FQDN", "shape": "string" },
         { "name": "isManaged", "displayName": "Managed", "shape": "boolean" },
