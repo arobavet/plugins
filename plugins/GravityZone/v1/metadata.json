@@ -1,7 +1,7 @@
 {
     "name": "gravityzone",
     "displayName": "Bitdefender GravityZone",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "author": { "name": "@arobavet", "type": "community" },
     "description": "Monitor your Bitdefender GravityZone managed estate — companies, endpoints, security policies, and quarantined items.",
     "category": "Security",
