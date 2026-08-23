@@ -9,18 +9,18 @@
         "version": 1,
         "contents": [
             {
-                "i": "a0909eb3-26f0-44bc-92b2-604ab539e482",
+                "i": "0720e7db-fd16-45dc-b0e6-abc96022bf4c",
                 "x": 0,
                 "y": 0,
-                "w": 4,
-                "h": 4,
+                "w": 1,
+                "h": 2,
                 "moved": false,
                 "static": false,
                 "z": 0,
                 "config": {
                     "_type": "tile/data-stream",
-                    "title": "Endpoint Details",
-                    "description": "Agent, policy, malware status, and module status for the selected endpoint(s)",
+                    "title": "Still Infected",
+                    "description": "Whether the endpoint is currently infected",
                     "timeframe": "none",
                     "activePluginConfigIds": ["{{configId}}"],
                     "dataStream": {
@@ -35,10 +35,177 @@
                     },
                     "variables": ["{{variables.[Endpoint]}}"],
                     "visualisation": {
+                        "type": "data-stream-blocks",
+                        "config": {
+                            "data-stream-blocks": {
+                                "labelColumn": "name",
+                                "stateColumn": "stillInfectedState",
+                                "linkColumn": "none",
+                                "columns": 2
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "a3557bac-ba1c-4e06-9f6b-ea7eee79c839",
+                "x": 1,
+                "y": 0,
+                "w": 1,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Malware Detected (24h)",
+                    "description": "Whether malware was detected on the endpoint in the last 24 hours",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[endpointDetails]}}",
+                        "name": "endpointDetails",
+                        "pluginConfigId": "{{configId}}"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Endpoints]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Endpoint]}}"
+                    },
+                    "variables": ["{{variables.[Endpoint]}}"],
+                    "visualisation": {
+                        "type": "data-stream-blocks",
+                        "config": {
+                            "data-stream-blocks": {
+                                "labelColumn": "name",
+                                "stateColumn": "malwareDetectionState",
+                                "linkColumn": "none",
+                                "columns": 2
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "98b31b96-5af0-4242-9162-f447012c846d",
+                "x": 2,
+                "y": 0,
+                "w": 1,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Policy Applied",
+                    "description": "Whether the assigned security policy is applied on the endpoint",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[endpointDetails]}}",
+                        "name": "endpointDetails",
+                        "pluginConfigId": "{{configId}}"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Endpoints]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Endpoint]}}"
+                    },
+                    "variables": ["{{variables.[Endpoint]}}"],
+                    "visualisation": {
+                        "type": "data-stream-blocks",
+                        "config": {
+                            "data-stream-blocks": {
+                                "labelColumn": "name",
+                                "stateColumn": "policyAppliedState",
+                                "linkColumn": "none",
+                                "columns": 2
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "7d11dae9-8291-42f8-a6f3-3a486505bb49",
+                "x": 3,
+                "y": 0,
+                "w": 1,
+                "h": 2,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Encryption Enabled",
+                    "description": "Whether the encryption module is enabled on the endpoint",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[endpointDetails]}}",
+                        "name": "endpointDetails",
+                        "pluginConfigId": "{{configId}}"
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Endpoints]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Endpoint]}}"
+                    },
+                    "variables": ["{{variables.[Endpoint]}}"],
+                    "visualisation": {
+                        "type": "data-stream-blocks",
+                        "config": {
+                            "data-stream-blocks": {
+                                "labelColumn": "name",
+                                "stateColumn": "encryptionState",
+                                "linkColumn": "none",
+                                "columns": 2
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "i": "a0909eb3-26f0-44bc-92b2-604ab539e482",
+                "x": 0,
+                "y": 2,
+                "w": 4,
+                "h": 4,
+                "moved": false,
+                "static": false,
+                "z": 0,
+                "config": {
+                    "_type": "tile/data-stream",
+                    "title": "Endpoint Details",
+                    "description": "Agent, policy, and OS details for the selected endpoint(s)",
+                    "timeframe": "none",
+                    "activePluginConfigIds": ["{{configId}}"],
+                    "dataStream": {
+                        "id": "{{dataStreams.[endpointDetails]}}",
+                        "name": "endpointDetails",
+                        "pluginConfigId": "{{configId}}",
+                        "sort": { "by": [["name", "asc"]] }
+                    },
+                    "scope": {
+                        "scope": "{{scopes.[Endpoints]}}",
+                        "workspace": "{{workspaceId}}",
+                        "variable": "{{variables.[Endpoint]}}"
+                    },
+                    "variables": ["{{variables.[Endpoint]}}"],
+                    "visualisation": {
                         "type": "data-stream-table",
                         "config": {
                             "data-stream-table": {
-                                "transpose": false
+                                "transpose": false,
+                                "columnOrder": [
+                                    "name",
+                                    "companyName",
+                                    "policy.name",
+                                    "operatingSystem",
+                                    "ip",
+                                    "agent.productVersion",
+                                    "agent.lastUpdate",
+                                    "lastSeen"
+                                ]
                             }
                         }
                     }

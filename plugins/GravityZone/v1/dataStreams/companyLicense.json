@@ -13,11 +13,12 @@
             "params": { "companyId": "{{object.rawId}}" },
             "id": "{{Date.now()}}"
         },
-        "pathToData": "result",
+        "postRequestScript": "companyLicense.js",
         "errorHandling": { "type": "path", "realm": "payload", "path": "error.message" }
     },
     "matches": { "sourceType": { "type": "oneOf", "values": ["GravityZone Company"] } },
     "metadata": [
+        { "name": "companyName", "displayName": "Company", "shape": "string" },
         { "name": "subscriptionType", "displayName": "Subscription Type", "shape": "number" },
         { "name": "expiryDate", "displayName": "Expiry Date", "shape": "date" },
         { "name": "usedSlots", "displayName": "Used Slots", "shape": "number" },
