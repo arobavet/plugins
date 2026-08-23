@@ -5,4 +5,8 @@
 // is what stops pagination cleanly (see errorHandling/endpoints.js for why that's needed).
 const items = (data && data.result && data.result.items) || [];
 const companyName = context.objects[0]?.name;
-result = items.map((item) => ({ ...item, companyName }));
+// getManagedEndpointDetails (endpointDetails.json) only returns data for managed
+// endpoints, and it's queried per GravityZone Endpoint object created from this row set.
+// Dropping unmanaged endpoints here keeps those objects from being created at all,
+// instead of creating them and having every endpointDetails call fail.
+result = items.filter((item) => item.isManaged).map((item) => ({ ...item, companyName }));
